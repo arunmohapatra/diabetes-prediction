@@ -22,19 +22,24 @@ jobs:
           java-version: '11'  # Specify the Java version you need (e.g., 11, 8, etc.)
           distribution: 'temurin'
 
-      # Step 3: Lint the code using Checkstyle
+      # Step 3: Install Checkstyle
+      - name: Install Checkstyle
+        run: |
+          wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.45/checkstyle-8.45-all.jar
+          chmod +x checkstyle-8.45-all.jar
+
+      # Step 4: Lint the code using Checkstyle
       - name: Lint with Checkstyle
         run: |
-          curl -O https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.45/checkstyle-8.45-all.jar
-          java -jar checkstyle-8.45-all.jar -c /google_checks.xml src/**/*.java
+          java -jar checkstyle-8.45-all.jar -c https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml src/**/*.java
 
-      # Step 4: Compile the code and run tests
+      # Step 5: Compile the code and run tests
       - name: Compile and Test
         run: |
           javac HelloWorld.java
           java HelloWorld
           
-      # Step 5: Deploy to S3 (Fixed)
+      # Step 6: Deploy to S3 (Fixed)
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.0
         with:
