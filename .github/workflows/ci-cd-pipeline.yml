@@ -22,20 +22,25 @@ jobs:
           java-version: '11'  # Specify the Java version you need (e.g., 11, 8, etc.)
           distribution: 'temurin'
 
-      - name: Build with Maven
+      # Step 3: Lint the code using Checkstyle
+      - name: Lint with Checkstyle
         run: |
-          mvn clean install  # Use Maven to clean and build the project
+          curl -O https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.45/checkstyle-8.45-all.jar
+          java -jar checkstyle-8.45-all.jar -c /google_checks.xml src/**/*.java
 
-      - name: Run tests with Maven
+      # Step 4: Compile the code and run tests
+      - name: Compile and Test
         run: |
-          mvn test  # Run tests using Maven
+          javac HelloWorld.java
+          java HelloWorld
           
-      - name: Build JAR
-        run: |
-          mvn package  # Package the project into a JAR file (optional step)
-          
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v3
+      # Step 5: Deploy to S3 (Fixed)
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@v0.5.0
         with:
-          name: java-build-artifact
-          path: target/*.jar  # Specify the path where the JAR file is created
+          folder: './'
+          bucket: ${{ secrets.AWS_S3_BUCKET }}
+          region: 'us-east-1'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
