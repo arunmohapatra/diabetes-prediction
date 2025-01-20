@@ -34,7 +34,7 @@ jobs:
           mvn package  # Package the project into a JAR file (optional step)
           
       - name: Upload JAR artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: java-build-artifact
           path: target/*.jar  # Specify the path where the JAR file is created
