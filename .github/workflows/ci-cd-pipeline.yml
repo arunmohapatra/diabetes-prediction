@@ -34,9 +34,9 @@ jobs:
           javac HelloWorld.java
           java HelloWorld
           
-      # Step 5: Deploy to AWS S3
+      # Step 5: Deploy to S3
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@0.5.1
+        uses: jakejarvis/s3-sync-action@v0.5.0
         with:
           folder: './'
           bucket: ${{ secrets.AWS_S3_BUCKET }}
