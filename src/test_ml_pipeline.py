@@ -9,7 +9,7 @@ import joblib
 from pathlib import Path
 
 # Constants
-TEST_DATA_PATH = "diabetes_prediction_dataset.csv"  # Replace with the correct path to your dataset
+TEST_DATA_PATH = "diabetes_prediction_dataset.csv"
 MODEL_PATH = "diabetes_model.pkl"
 
 @pytest.fixture
@@ -19,31 +19,13 @@ def load_data():
     data = pd.read_csv(TEST_DATA_PATH)
     return data
 
+
 def test_data_loading(load_data):
     """Test if the dataset loads correctly."""
     data = load_data
     assert not data.empty, "Dataset is empty."
-    assert 'diabetes' in data.columns, "'diabetes' column is missing in the dataset."
+    assert "diabetes" in data.columns, "'diabetes' column is missing in the dataset."
 
-# def test_data_preprocessing(load_data):
-#     """Test data preprocessing."""
-#     data = load_data
-
-#     # Handle missing values
-#     data.dropna(inplace=True)
-#     X = data.drop(columns=['diabetes'], axis=1)
-#     y = data['diabetes']
-
-#     # Ensure all columns are numeric
-#     X = X.apply(pd.to_numeric, errors='coerce')
-#     X.fillna(X.mean(), inplace=True)
-
-#     # Standardize the features
-#     scaler = StandardScaler()
-#     X_scaled = scaler.fit_transform(X)
-
-#     assert X_scaled.shape[0] == len(y), "Mismatch in features and target sizes."
-#    assert np.allclose(np.mean(X_scaled, axis=0), 0, atol=1e-5), "Features are not standardized."
 
 def test_model_training(load_data):
     """Test the model training process."""
@@ -51,11 +33,17 @@ def test_model_training(load_data):
 
     # Preprocess the data
     data.dropna(inplace=True)
-    X = data.drop(columns=['diabetes'], axis=1).apply(pd.to_numeric, errors='coerce').fillna(0)
-    y = data['diabetes']
+    X = (
+        data.drop(columns=["diabetes"], axis=1)
+        .apply(pd.to_numeric, errors="coerce")
+        .fillna(0)
+    )
+    y = data["diabetes"]
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X_scaled, y, test_size=0.2, random_state=42, stratify=y
+    )
 
     # Train the model
     model = RandomForestClassifier(n_estimators=100, random_state=42)
@@ -68,6 +56,7 @@ def test_model_training(load_data):
 
     # Ensure the model is saved
     assert Path(MODEL_PATH).is_file(), "Model file was not saved."
+
 
 def test_model_prediction():
     """Test model prediction using a saved model."""

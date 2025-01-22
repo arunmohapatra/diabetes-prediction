@@ -1,5 +1,4 @@
 import pandas as pd
-# import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
@@ -8,8 +7,6 @@ from sklearn.metrics import (
     classification_report,
     confusion_matrix,
 )
-
-
 import joblib
 
 # Load the dataset
@@ -28,15 +25,12 @@ print("Missing values:\n", data.isnull().sum())
 # Option 1: Drop rows with missing values
 data.dropna(inplace=True)
 
-# Option 2: Fill missing values (e.g., with the mean of each column)
-# data.fillna(data.mean(), inplace=True)
-
 # Split features and target
-X = data.drop(columns=['diabetes'], axis=1)  # 'Diabetes' is the target column
-y = data['diabetes']
+X = data.drop(columns=["diabetes"], axis=1)  # 'Diabetes' is the target column
+y = data["diabetes"]
 
 # Ensure all columns are numeric (convert any non-numeric columns)
-X = X.apply(pd.to_numeric, errors='coerce')
+X = X.apply(pd.to_numeric, errors="coerce")
 
 # Handle missing values in X after coercion (if any)
 X.fillna(X.mean(), inplace=True)
@@ -47,13 +41,12 @@ X_scaled = scaler.fit_transform(X)
 
 # Split into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(
-    X_scaled, 
-    y, 
-    test_size=0.2, 
-    random_state=42, 
+    X_scaled,
+    y,
+    test_size=0.2,
+    random_state=42,
     stratify=y,
 )
-
 
 # Build a Random Forest model
 model = RandomForestClassifier(n_estimators=100, random_state=42)
