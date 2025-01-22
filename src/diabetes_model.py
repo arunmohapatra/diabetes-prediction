@@ -26,7 +26,7 @@ print("Missing values:\n", data.isnull().sum())
 data.dropna(inplace=True)
 
 # Split features and target
-X = data.drop(columns=["diabetes"], axis=1)  # 'Diabetes' is the target column
+X = data.drop(columns=["diabetes"], axis=1)  # 'Diabete' is the target column
 y = data["diabetes"]
 
 # Ensure all columns are numeric (convert any non-numeric columns)
