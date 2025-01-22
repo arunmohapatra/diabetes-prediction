@@ -12,6 +12,7 @@ from pathlib import Path
 TEST_DATA_PATH = "diabetes_prediction_dataset.csv"
 MODEL_PATH = "diabetes_model.pkl"
 
+
 @pytest.fixture
 def load_data():
     """Fixture to load the dataset."""
@@ -24,7 +25,7 @@ def test_data_loading(load_data):
     """Test if the dataset loads correctly."""
     data = load_data
     assert not data.empty, "Dataset is empty."
-    assert "diabetes" in data.columns, "'diabetes' column is missing in the dataset."
+    assert "diabetes" in data.columns, "'diabetes' column missing dataset."
 
 
 def test_model_training(load_data):
