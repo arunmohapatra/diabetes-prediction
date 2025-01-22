@@ -49,4 +49,4 @@ jobs:
         run: |
           docker login -u "arunbits" -p "Progress1980#"
           docker tag my_ml_model:latest arunbits/test:latest
-          docker push aarunbits/test:latest
+          docker push arunbits/test:latest
