@@ -122,3 +122,45 @@ Open Pull Request
 Push the branch to the remote repository.
 Open a pull request on GitHub or GitLab.
 Review and merge the pull request.
+```
+
+### Common Errors
+
+#### Git vs dvc tracking conflict
+If dvc is added for the file which is tracked by git, we will end up in error. We should untrack via git and track is via dvc
+
+```sh
+(py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc add data\diabetes_prediction_dataset.csv
+
+Adding...                                                                                                                                                         
+ERROR:  output 'data\diabetes_prediction_dataset.csv' is already tracked by SCM (e.g. Git).                                                                       
+    You can remove it from Git, then add to DVC.
+        To stop tracking from Git:
+            git rm -r --cached 'data\diabetes_prediction_dataset.csv'
+            git commit -m "stop tracking data\diabetes_prediction_dataset.csv"
+```
+
+#### Solution: 
+```bash
+git rm -r --cached data\diabetes_prediction_dataset.csv
+
+#commit the change to git
+git commit -m "stop tracking dvs files"
+
+# once we untrack from git, run the tracking via dvc
+dvc add data\diabetes_prediction_dataset.csv
+```
+```plaintext
+
+(py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc add data\diabetes_prediction_dataset.csv
+
+100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00,  5.98file/s] 
+
+To track the changes with git, run:
+
+        git add 'data\.gitignore' 'data\diabetes_prediction_dataset.csv.dvc'
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+```
