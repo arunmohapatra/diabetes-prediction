@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-diabetes
-        image: arunbits/test:latest
+        image: arunbits/flask-app:latest
         ports:
         - containerPort: 5000
 ---
