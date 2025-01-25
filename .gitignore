@@ -76,3 +76,5 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+dvc-remote

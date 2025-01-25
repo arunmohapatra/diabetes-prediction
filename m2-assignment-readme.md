@@ -114,94 +114,195 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
     ```bash
     dvc add data/dataset.csv
     ```
-#### Initialize DVC in your project
+4. **Sample Output**
 
-To initialize DVC in your project, run the following command:
+    ```plaintext
+    (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc init 
+    Initialized DVC repository.
 
-```bash
-dvc init
-```
+    You can now commit the changes to git.
 
-Sample Output:
+    +---------------------------------------------------------------------+
+    |                                                                     |
+    |        DVC has enabled anonymous aggregate usage analytics.         |
+    |     Read the analytics documentation (and how to opt-out) here:     |
+    |             <https://dvc.org/doc/user-guide/analytics>              |
+    |                                                                     |
+    +---------------------------------------------------------------------+
 
-```plaintext
-(py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc init 
-Initialized DVC repository.
+    What's next?
+    ------------
+    - Check out the documentation: <https://dvc.org/doc>
+    - Get help and share ideas: <https://dvc.org/chat>
+    - Star us on GitHub: <https://github.com/iterative/dvc>
+    ```
 
-You can now commit the changes to git.
+5. **Adding DVC Files to GitHub**
 
-+---------------------------------------------------------------------+
-|                                                                     |
-|        DVC has enabled anonymous aggregate usage analytics.         |
-|     Read the analytics documentation (and how to opt-out) here:     |
-|             <https://dvc.org/doc/user-guide/analytics>              |
-|                                                                     |
-+---------------------------------------------------------------------+
+    After initializing DVC and adding your dataset, you need to add the DVC files to your Git repository. Run the following command:
 
-What's next?
-------------
-- Check out the documentation: <https://dvc.org/doc>
-- Get help and share ideas: <https://dvc.org/chat>
-- Star us on GitHub: <https://github.com/iterative/dvc>
-```
-
-#### Adding DVC Files to GitHub
-
-After initializing DVC and adding your dataset, you need to add the DVC files to your Git repository. Run the following command:
-
-```bash
-git status
-git add .dvc
-```
-
-Sample Output:
-
-```plaintext
-(py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>git status
-On branch feature/code-cleanup
-Your branch is up to date with 'origin/feature/code-cleanup'.
-
-Changes to be committed:
-    (use "git restore --staged <file>..." to unstage)
-                new file:   .dvc/.gitignore
-                new file:   .dvc/config
-                new file:   .dvcignore
-                new file:   .gitignore
-
-Changes not staged for commit:
-    (use "git add/rm <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-                modified:   README.md
-                modified:   m2-assignment-readme.md
-                deleted:    model/diabetes_model.pkl
-                modified:   requirements.txt
-                modified:   src/diabetes_model.py
-
-Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-                models/
-```
-
-To commit the changes, run:
-
-```bash
-git add .
-git commit -m "Add DVC files and dataset"
-git push origin feature/code-cleanup
-```
-4. **Commit the changes:**
     ```bash
-    git add data/dataset.csv.dvc .gitignore
-    git commit -m "Add dataset to DVC"
+    git status
+    git add .dvc
+    ```
+
+    Sample Output:
+
+    ```plaintext
+    (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>git status
+    On branch feature/code-cleanup
+    Your branch is up to date with 'origin/feature/code-cleanup'.
+
+    Changes to be committed:
+        (use "git restore --staged <file>..." to unstage)
+                    new file:   .dvc/.gitignore
+                    new file:   .dvc/config
+                    new file:   .dvcignore
+                    new file:   .gitignore
+
+    Changes not staged for commit:
+        (use "git add/rm <file>..." to update what will be committed)
+        (use "git restore <file>..." to discard changes in working directory)
+                    modified:   README.md
+                    modified:   m2-assignment-readme.md
+                    deleted:    model/diabetes_model.pkl
+                    modified:   requirements.txt
+                    modified:   src/diabetes_model.py
+
+    Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+                    models/
+    ```
+
+    To commit the changes, run:
+
+
+6. **Commit the changes:**
+    ```bash
+    git add .
+    git commit -m "Add DVC files and dataset"
+    git push origin feature/code-cleanup
     ```
     
-5. **Show how to revert to a previous version of the dataset:**
+7. **Show how to revert to a previous version of the dataset:**
     ```bash
     dvc checkout <commit_hash>
     ```
 
-6. **Add remote connectivity for DVC as local:**
+8. **Add remote connectivity for DVC as local:**
     ```bash
     dvc remote add -d local-remote dvc-remote
     Setting 'local-remote' as a default remote.
+    ```
+9. **DVC & GIT - for Version tracking**
+    ```bash
+        (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>git status
+        On branch feature/code-cleanup
+        Your branch is ahead of 'origin/feature/code-cleanup' by 2 commits.
+        (use "git push" to publish your local commits)
+
+        Changes to be committed:
+        (use "git restore --staged <file>..." to unstage)
+                new file:   data/.gitignore
+                new file:   data/diabetes_prediction_dataset.csv.dvc
+                modified:   m1-assignment-readme.md
+
+    ```
+10. **Updating Dataset with DVC**
+    1. **Pull the latest version of the dataset:**
+        ```bash
+        dvc pull data/diabetes_prediction_dataset.csv
+        ```
+
+    2. **Make changes to the CSV file:**
+        ```plaintext
+        # Open the CSV file and make your changes
+        ```
+
+    3. **Track the changes with DVC:**
+        ```bash
+        dvc add data/diabetes_prediction_dataset.csv
+        ```
+
+    4. **Push the updated dataset to the remote storage:**
+        ```bash
+        dvc push
+        ```
+
+    5. **Commit the changes to Git:**
+        ```bash
+        git add data/diabetes_prediction_dataset.csv.dvc
+        git commit -m "Update dataset with new changes"
+        git push origin feature/code-cleanup
+        ```
+
+    6. **Check the status of your Git repository:**
+        ```bash
+        git status
+        ```
+
+    7. **Sample Output:**
+
+        ```plaintext
+        (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc pull --force
+        Collecting                                                                                                                             |1.00 [00:00,  285entry/s]
+        Fetching
+        Building workspace index                                                                                                               |2.00 [00:00,  199entry/s]
+        Comparing indexes                                                                                                                      |3.00 [00:00,  863entry/s] 
+        Applying changes                                                                                                                       |0.00 [00:00,     ?file/s] 
+        Everything is up to date.
+
+        (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc status
+        data\diabetes_prediction_dataset.csv.dvc:
+                changed outs:
+                        modified:           data\diabetes_prediction_dataset.csv
+        ```
+
+
+### Common Errors
+
+1. #### Git vs dvc tracking conflict
+    If dvc is added for the file which is tracked by git, we will end up in error. We should untrack via git and track is via dvc
+
+    ```sh
+    (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc add data\diabetes_prediction_dataset.csv
+
+    Adding...                                                                                                                                                         
+    ERROR:  output 'data\diabetes_prediction_dataset.csv' is already tracked by SCM (e.g. Git).                                                                       
+        You can remove it from Git, then add to DVC.
+            To stop tracking from Git:
+                git rm -r --cached 'data\diabetes_prediction_dataset.csv'
+                git commit -m "stop tracking data\diabetes_prediction_dataset.csv"
+    ```
+
+    #### Solution: 
+    ```bash
+    git rm -r --cached data\diabetes_prediction_dataset.csv
+
+    #commit the change to git
+    git commit -m "stop tracking dvs files"
+
+    # once we untrack from git, run the tracking via dvc
+    dvc add data\diabetes_prediction_dataset.csv
+    ```
+    ```plaintext
+
+    (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc add data\diabetes_prediction_dataset.csv
+
+    100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00,  5.98file/s] 
+
+    To track the changes with git, run:
+
+            git add 'data\.gitignore' 'data\diabetes_prediction_dataset.csv.dvc'
+
+    To enable auto staging, run:
+
+            dvc config core.autostage true
+    ```
+
+2. #### dvc-remote tracking
+    Avoid tracking dvc-remote, we will add in gitignore. 
+    ```bash
+    >> touch .gitignore
+    >> dvc-remote
     ```
