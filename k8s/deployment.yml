@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-iris-app
+  name: flask-diabetes-app
   labels:
-    app: flask-iris
+    app: flask-diabetes
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask-iris
+      app: flask-diabetes
   template:
     metadata:
       labels:
-        app: flask-iris
+        app: flask-diabetes
     spec:
       containers:
-      - name: flask-iris
+      - name: flask-diabetes
         image: arunbits/test:latest
         ports:
         - containerPort: 5000
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-iris-service
+  name: flask-diabetes-service
 spec:
   type: LoadBalancer
   selector:
-    app: flask-iris
+    app: flask-diabetes
   ports:
   - protocol: TCP
     port: 80
