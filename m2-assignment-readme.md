@@ -67,7 +67,54 @@ Collecting dvc-task<1,>=0.3.0 (from dvc==3.58.0->-r requirements.txt (line 6))
 Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6))
 ```
 
-### Initialize DVC in your project
+
+## Step-by-Step Instructions
+
+### 1. Experiment Tracking with MLflow
+
+1. **Install MLflow:**
+    ```bash
+    pip install mlflow
+    ```
+
+2. **Set up MLflow in your project:**
+    ```python
+    import mlflow
+    import mlflow.sklearn
+
+    mlflow.set_experiment("my_experiment")
+
+    with mlflow.start_run():
+         # Your model training code here
+         mlflow.log_param("param_name", param_value)
+         mlflow.log_metric("metric_name", metric_value)
+         mlflow.sklearn.log_model(model, "model")
+    ```
+
+3. **Record metrics, parameters, and results for at least three different runs:**
+    ```bash
+    Run 1: python train.py --param1 value1 --param2 value2
+    Run 2: python train.py --param1 value3 --param2 value4
+    Run 3: python train.py --param1 value5 --param2 value6
+    ```
+
+### 2. Data Versioning with DVC
+
+1. **Install DVC:**
+    ```bash
+    pip install dvc
+    ```
+
+2. **Initialize DVC in your project:**
+    ```bash
+    dvc init
+    ```
+
+3. **Add your dataset to DVC:**
+    ```bash
+    dvc add data/dataset.csv
+    ```
+#### Initialize DVC in your project
 
 To initialize DVC in your project, run the following command:
 
@@ -98,7 +145,7 @@ What's next?
 - Star us on GitHub: <https://github.com/iterative/dvc>
 ```
 
-## Adding DVC Files to GitHub
+#### Adding DVC Files to GitHub
 
 After initializing DVC and adding your dataset, you need to add the DVC files to your Git repository. Run the following command:
 
@@ -142,52 +189,19 @@ git add .
 git commit -m "Add DVC files and dataset"
 git push origin feature/code-cleanup
 ```
+4. **Commit the changes:**
+    ```bash
+    git add data/dataset.csv.dvc .gitignore
+    git commit -m "Add dataset to DVC"
+    ```
+    
+5. **Show how to revert to a previous version of the dataset:**
+    ```bash
+    dvc checkout <commit_hash>
+    ```
 
-## Step-by-Step Instructions
-
-### 1. Experiment Tracking with MLflow
-
-1. **Install MLflow:**
-   ```bash
-   pip install mlflow
-
-2. **Set up MLflow in your project:**
-
-```bash
-import mlflow
-import mlflow.sklearn
-
-mlflow.set_experiment("my_experiment")
-Track your experiments:
-
-with mlflow.start_run():
-    # Your model training code here
-    mlflow.log_param("param_name", param_value)
-    mlflow.log_metric("metric_name", metric_value)
-    mlflow.sklearn.log_model(model, "model")
-```
-2. **Record metrics, parameters, and results for at least three different runs:**
-
-```
-Run 1: python train.py --param1 value1 --param2 value2
-Run 2: python train.py --param1 value3 --param2 value4
-Run 3: python train.py --param1 value5 --param2 value6
-```
-3. **Data Versioning with DVC**
-
-Install DVC:
-
-pip install dvc
-Initialize DVC in your project:
-
-dvc init
-Add your dataset to DVC:
-
-dvc add data/dataset.csv
-Commit the changes:
-
-git add data/dataset.csv.dvc .gitignore
-git commit -m "Add dataset to DVC"
-Show how to revert to a previous version of the dataset:
-
-dvc checkout <commit_hash>
+6. **Add remote connectivity for DVC as local:**
+    ```bash
+    dvc remote add -d local-remote dvc-remote
+    Setting 'local-remote' as a default remote.
+    ```
