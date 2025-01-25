@@ -78,3 +78,5 @@ target/
 .ipynb_checkpoints
 
 dvc-remote
+
+mlruns

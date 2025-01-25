@@ -2,12 +2,7 @@
 
 ## Tasks
 
-### 1. Experiment Tracking
-
-- **Use MLflow to track experiments for a machine learning project.**
-- **Record metrics, parameters, and results of at least three different model training runs.**
-
-### 2. Data Versioning
+### 1. Data Versioning
 
 - **Use DVC (Data Version Control) to version control a dataset used in your project.**
 - **Show how to revert to a previous version of the dataset.**
@@ -70,33 +65,40 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
 
 ## Step-by-Step Instructions
 
-### 1. Experiment Tracking with MLflow
+### 2. Experiment Tracking
 
-1. **Install MLflow:**
+- **Use MLflow to track experiments for a machine learning project.**
+- **Record metrics, parameters, and results of at least three different model training runs.**
+
+1. **Install MLFlow Module**
+```bash
+    $ pip install mlflow
+```
+```plaintext
+$pip install mlflow
+    ...
+    Installing collected packages: zipp, wrapt, waitress, sqlparse, pyasn1, pyarrow, protobuf, pillow, MarkupSafe, markdown, kiwisolver, itsdangerous, greenlet, graphql-core, fonttools, cycler, contourpy, cloudpickle, cachetools, blinker, Werkzeug, sqlalchemy, rsa, pyasn1-modules, matplotlib, Mako, Jinja2, importlib_metadata, graphql-relay, docker, deprecated, opentelemetry-api, graphene, google-auth, Flask, alembic, opentelemetry-semantic-conventions, databricks-sdk, opentelemetry-sdk, mlflow-skinny, mlflow
+
+    Successfully installed Flask-3.1.0 Jinja2-3.1.5 Mako-1.3.8 MarkupSafe-3.0.2 Werkzeug-3.1.3 alembic-1.14.1 blinker-1.9.0 cachetools-5.5.1 cloudpickle-3.1.1 contourpy-1.3.1 cycler-0.12.1 databricks-sdk-0.41.0 deprecated-1.2.17 docker-7.1.0 fonttools-4.55.6 google-auth-2.38.0 graphene-3.4.3 graphql-core-3.2.5 graphql-relay-3.2.0 greenlet-3.1.1 importlib_metadata-8.5.0 itsdangerous-2.2.0 kiwisolver-1.4.8 markdown-3.7 matplotlib-3.10.0 mlflow-2.20.0 mlflow-skinny-2.20.0 opentelemetry-api-1.29.0 opentelemetry-sdk-1.29.0 opentelemetry-semantic-conventions-0.50b0 pillow-11.1.0 protobuf-5.29.3 pyarrow-18.1.0 pyasn1-0.6.1 pyasn1-modules-0.4.1 rsa-4.9 sqlalchemy-2.0.37 sqlparse-0.5.3 waitress-3.0.2 wrapt-1.17.2 zipp-3.21.0
+```
+
+2. **Run MLFlow**
     ```bash
-    pip install mlflow
+    $ mlflow ui
+
+    ##NOTE: Run from the same folder you\'re running the mlflow_execution.py
     ```
-
-2. **Set up MLflow in your project:**
-    ```python
-    import mlflow
-    import mlflow.sklearn
-
-    mlflow.set_experiment("my_experiment")
-
-    with mlflow.start_run():
-         # Your model training code here
-         mlflow.log_param("param_name", param_value)
-         mlflow.log_metric("metric_name", metric_value)
-         mlflow.sklearn.log_model(model, "model")
+    ```plaintext
+    (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>mlflow ui
+    INFO:waitress:Serving on http://127.0.0.1:5000
+    WARNING:waitress.queue:Task queue depth is 1
+    WARNING:waitress.queue:Task queue depth is 2
     ```
-
-3. **Record metrics, parameters, and results for at least three different runs:**
-    ```bash
-    Run 1: python train.py --param1 value1 --param2 value2
-    Run 2: python train.py --param1 value3 --param2 value4
-    Run 3: python train.py --param1 value5 --param2 value6
-    ```
+3. **Evaluation Comparison**
+    1. Different Model Execution/Run: 
+        ![Execution Of Models with different Params](runs.png)
+    2. Evaluation Comparison
+        ![Compare of MSE & R2 for different Runs](evaluation.png)
 
 ### 2. Data Versioning with DVC
 
@@ -330,7 +332,7 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
 
     To enable auto staging, run:
 
-            dvc config core.autostage true
+    dvc config core.autostage true
     ```
 
 2. #### dvc-remote tracking
@@ -348,5 +350,6 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
     ```
      #### Solution: Add the exact path to dvc add, if you're using relative make sure you provide reference or parent ref.
      ```bash
-        dvc add data\diabetes_prediction_dataset.csv
+    dvc add data\diabetes_prediction_dataset.csv
      ```
+
