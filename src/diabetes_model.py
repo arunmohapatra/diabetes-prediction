@@ -10,7 +10,7 @@ from sklearn.metrics import (
 import joblib
 
 # Load the dataset
-file_path = "diabetes_prediction_dataset.csv"
+file_path = "data/diabetes_prediction_dataset.csv"
 data = pd.read_csv(file_path)
 
 # Inspect the dataset
