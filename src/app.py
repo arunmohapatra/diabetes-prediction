@@ -4,17 +4,21 @@ import joblib
 import os
 from sklearn.preprocessing import StandardScaler
 
+
 # Initialize Flask app
 app = Flask(__name__)
+
 
 # Load the trained model and scaler
 print("Current Working Directory:", os.getcwd())
 model = joblib.load("diabetes_model.pkl")
 scaler = StandardScaler()
 
+
 @app.route("/")
 def home():
     return "Diabetes Prediction API is running!"
+
 
 # API endpoint for prediction
 @app.route("/predict", methods=["POST"])
@@ -36,7 +40,7 @@ def predict():
         prediction = model.predict(data_scaled)
 
         # Return the prediction as JSON
-        result = {"prediction": int(prediction[0])}  # Convert NumPy value to int
+        result = {"prediction": int(prediction[0])}
         return jsonify(result)
 
     except Exception as e:
