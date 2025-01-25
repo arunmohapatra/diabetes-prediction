@@ -9,8 +9,8 @@ import joblib
 from pathlib import Path
 
 # Constants
-TEST_DATA_PATH = "diabetes_prediction_dataset.csv"
-MODEL_PATH = "diabetes_model.pkl"
+TEST_DATA_PATH = "data/diabetes_prediction_dataset.csv"
+MODEL_PATH = "models/diabetes_model.pkl"
 
 
 @pytest.fixture

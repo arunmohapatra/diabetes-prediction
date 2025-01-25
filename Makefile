@@ -7,7 +7,7 @@ run:
 	python -m app.main
 
 test:
-	python -m unittest discover tests
+	pytest tests/test_model.py
 
 clean:
 	rm -rf __pycache__
