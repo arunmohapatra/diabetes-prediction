@@ -223,22 +223,55 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
         ```bash
         dvc add data/diabetes_prediction_dataset.csv
         ```
+        Sample Output:
+        ```plaintext
+            (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc add data\diabetes_prediction_dataset.csv
+
+            100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00, 10.87file/s] 
+
+            To track the changes with git, run:
+
+                    git add 'data\diabetes_prediction_dataset.csv.dvc'
+
+            To enable auto staging, run:
+
+                    dvc config core.autostage true
+
+        ```
 
     4. **Push the updated dataset to the remote storage:**
         ```bash
         dvc push
         ```
+        ```plaintext
+        (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc push
+        Collecting                                                                                                                             |1.00 [00:00,  269entry/s]
+        Pushing
+        1 file pushed
+        ```
 
-    5. **Commit the changes to Git:**
+    5. **Check the status of your Git repository:**
+        ```bash
+        git status
+        ```
+        ```plaintext
+        (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>git status
+        On branch feature/code-cleanup
+        Your branch is up to date with 'origin/feature/code-cleanup'.
+
+        Changes not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+        (use "git restore <file>..." to discard changes in working directory)
+                modified:   data/diabetes_prediction_dataset.csv.dvc
+
+        no changes added to commit (use "git add" and/or "git commit -a")
+        ```
+
+    6. **Commit the changes to Git:**
         ```bash
         git add data/diabetes_prediction_dataset.csv.dvc
         git commit -m "Update dataset with new changes"
         git push origin feature/code-cleanup
-        ```
-
-    6. **Check the status of your Git repository:**
-        ```bash
-        git status
         ```
 
     7. **Sample Output:**
