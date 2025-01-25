@@ -65,7 +65,7 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
 
 ## Step-by-Step Instructions
 
-### 2. Experiment Tracking
+### 1. Experiment Tracking
 
 - **Use MLflow to track experiments for a machine learning project.**
 - **Record metrics, parameters, and results of at least three different model training runs.**
