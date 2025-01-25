@@ -274,7 +274,7 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
         git push origin feature/code-cleanup
         ```
 
-    7. **Sample Output:**
+    7. **Reset/Reload the old file or ignore changes - force load**
 
         ```plaintext
         (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc pull --force
@@ -339,3 +339,14 @@ Collecting flatten_dict<1,>=0.4.1 (from dvc==3.58.0->-r requirements.txt (line 6
     >> touch .gitignore
     >> dvc-remote
     ```
+
+3. #### dvc add issues
+    Avoid tracking dvc-remote, we will add in gitignore. 
+    ```bash
+    (py312) C:\Users\sagar\OneDrive\Documents\My Docs\Education\BITS - MTECH\SME 3\MLOps\Assignment-1\diabetes-prediction>dvc add .
+    ERROR: Path: c:\users\sagar\onedrive\documents\my docs\education\bits - mtech\sme 3\mlops\assignment-1 does not overlap with base path: c:\users\sagar\onedrive\documents\my docs\education\bits - mtech\sme 3\mlops\assignment-1\diabetes-prediction
+    ```
+     #### Solution: Add the exact path to dvc add, if you're using relative make sure you provide reference or parent ref.
+     ```bash
+        dvc add data\diabetes_prediction_dataset.csv
+     ```
