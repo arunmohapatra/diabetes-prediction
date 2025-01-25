@@ -61,4 +61,4 @@ print("Classification Report:\n", classification_report(y_test, y_pred))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
 # Save the model
-joblib.dump(model, "diabetes_model.pkl")
+joblib.dump(model, "/models/diabetes_model.pkl")
