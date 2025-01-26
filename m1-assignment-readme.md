@@ -1,7 +1,6 @@
 # M1: MLOps Foundations
 
-## Objective
-Understand the basics of MLOps and implement a simple CI/CD pipeline for the project 'diabetes-prediction'
+**Objective**: Understand the basics of MLOps and implement a simple CI/CD pipeline for the project 'diabetes-prediction'
 
 ## Tasks
 
