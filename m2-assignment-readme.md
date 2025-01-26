@@ -1,4 +1,6 @@
-# Machine Learning Project
+# M2: Process and Tooling
+
+**Objective**: Gain hands-on experience with popular MLOps tools and understand the processes they support.
 
 ## Tasks
 
