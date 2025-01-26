@@ -50,7 +50,6 @@ for exp in experiments:
         print(f"Running with n_estimators={n_estimators}, "
         f"random_state={random_state}")
 
-
         # Initialize and train the Random Forest model
         rf = RandomForestClassifier(
          n_estimators=n_estimators,
