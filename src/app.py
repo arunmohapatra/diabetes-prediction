@@ -17,7 +17,7 @@ scaler = StandardScaler()
 
 @app.route("/")
 def home():
-    return "Diabetes Prediction API is running!"
+    return "Diabetes Prediction API is runing!"
 
 
 # API endpoint for prediction
