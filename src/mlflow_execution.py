@@ -48,14 +48,14 @@ for exp in experiments:
         mlflow.log_param("random_state", random_state)
 
         print(f"Running with n_estimators={n_estimators}, "
-      f"random_state={random_state}")
+        f"random_state={random_state}")
 
 
         # Initialize and train the Random Forest model
         rf = RandomForestClassifier(
-    n_estimators=n_estimators,
-    random_state=random_state
-)
+         n_estimators=n_estimators,
+         random_state=random_state
+        )
 
         rf.fit(X_train, Y_train)
 
