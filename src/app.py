@@ -5,7 +5,7 @@ import os
 from sklearn.preprocessing import StandardScaler
 
 
-# Initialize Flask application
+# Initialize Flask aplication
 app = Flask(__name__)
 
 
