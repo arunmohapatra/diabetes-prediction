@@ -9,7 +9,7 @@ import joblib
 from pathlib import Path
 
 # Constants
-TEST_DATA_PATH = "../data/diabetes_prediction_dataset.csv"
+TEST_DATA_PATH = "data/diabetes_prediction_dataset.csv"
 MODEL_PATH = "models/diabetes_model.pkl"
 
 
