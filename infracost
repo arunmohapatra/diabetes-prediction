@@ -67,3 +67,13 @@ Whether you're an engineer, DevOps practitioner, or architect, you'll walk away 
 "The Art of Budget-Conscious Shipping: Cost-Aware DevOps in Action"
 
 "Shift Left on Cost: Empowering Developers with FinOps in the Pipeline"
+
+
+===
+In the era of cloud-native applications and rapid deployments, cost has become the invisible bug in our delivery pipelines. While DevOps has enabled faster shipping, it often leaves finance teams scrambling to keep up with unpredictable cloud bills. This session bridges that gap by introducing a FinOps-driven approach to Continuous Delivery, empowering developers and DevOps engineers to factor in cost awareness as a first-class citizen in the SDLC.
+
+Using tools like Infracost and Spinnaker, we’ll demonstrate how to inject real-time cost estimates into pull requests and pipelines, set up budget guardrails, and make cloud cost data actionable and visible where it matters most—inside developer workflows. We’ll walk through a live example of how a Terraform infrastructure change can be automatically flagged, validated, or approved based on cost policies before reaching production.
+
+Attendees will leave with a clear blueprint for implementing cost-aware CI/CD pipelines, integrating FinOps into their teams without disrupting developer velocity. This session is ideal for engineers, SREs, architects, and DevOps practitioners who want to improve cloud efficiency, enforce budget-conscious governance, and foster a culture of financial accountability in their delivery process.
+
+
