@@ -1,0 +1,47 @@
+"Shift-Left Cloud Cost Estimation: Integrating Infracost into CI/CD for FinOps-Driven DevOps"
+
+
+This project introduces a cost-aware software delivery pipeline that integrates Infracost into the CI/CD workflow, allowing engineering teams to preview cloud costs before infrastructure is provisioned. By incorporating cost feedback during the planning and development stages, teams can avoid surprises, make informed decisions, and collaborate with FinOps early in the SDLC.
+
+The solution is built around:
+
+Terraform + Infracost for cost estimation
+
+CI/CD tooling (e.g., GitHub Actions, Jenkins, GitLab, Spinnaker)
+
+Optional Slack/MS Teams alerts or PR comments for team visibility
+
+===
+💰 Cost Awareness	Prevent unexpected cloud spend by surfacing cost info before infrastructure is deployed
+🔍 Visibility	Adds cost diffs directly to pull requests and CI dashboards
+🚧 Guardrails	Enforce policy thresholds like "no change > $500/month without approval"
+🤝 Collaboration	Improves transparency between engineering, DevOps, and finance
+📈 Continuous Improvement	Helps developers learn the cost impact of infra choices over time
+
+
+====
+Area	Skills
+IaC	Terraform, HCL
+CI/CD	GitHub Actions, Jenkins, GitLab CI, or Spinnaker
+DevOps	Bash/Python scripting, Infrastructure planning
+FinOps	Basic understanding of cloud billing/pricing models
+Monitoring	(Optional) Integration with dashboards or Slack/MS Teams for reporting
+
+====
+This initiative empowers developers and DevOps engineers to adopt a "shift-left" FinOps mindset by integrating Infracost into their daily workflows. The project demonstrates how to inject real-time infrastructure cost estimates into the pull request and pipeline stages of the SDLC, allowing engineers to see:
+
+How much a change will cost (before it's applied),
+
+What the delta is compared to the current state,
+
+Whether the change violates team or org-level budget thresholds.
+
+By aligning cloud cost visibility with GitOps and CI/CD practices, the project drives a more responsible, sustainable, and collaborative approach to infrastructure provisioning.
+
+
+===
+
+By attending this session, you will gain practical insights into integrating FinOps principles directly into your CI/CD pipelines using tools like Infracost and Spinnaker. 
+You'll learn how to estimate infrastructure costs before deployment, enforce cost-related policies during the SDLC, and make informed, budget-conscious decisions without slowing down delivery. 
+This session will empower you to build cost-aware DevOps workflows, improve collaboration with finance teams, and drive a culture of accountability and efficiency in your cloud-native projects. 
+Whether you're an engineer, DevOps practitioner, or architect, you'll walk away with actionable strategies and tools to reduce cloud waste and deliver smarter, more cost-effective software.
